@@ -2,41 +2,49 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Test</title>
-        <link rel="stylesheet" href="/styles/resets.css">
-        <link rel="stylesheet" href="/styles/base.css">
-        <link rel="stylesheet" href="/styles/header.css">
-        <link rel="stylesheet" href="/styles/form.css">
-        <link rel="stylesheet" href="/styles/footer.css">
+        <title>Natural Language checker</title>
     </head>
 
     <body>
 
         <header>
-            <div class="">
-                Logo
+            <div class="logo">
             </div>
-            <div class="">
-                navigation
-            </div>
+            <h1>Natural Language checker</h1>
         </header>
 
-        <main>
-            <section>
-                <form class="" onsubmit="return Client.handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
-                    <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
+        <main class="waiting">
+            <section class="form-wrapper">
+                <form class="" onsubmit="return Client.submitForm(event)">
+                    <label for="url-field">add a link to analyse</label>
+                    <div id="fields-wrapper">
+                    <input type="url" id="url-field" name="url" value="" placeholder="https://example.com" required>
+                    <input type="submit" name="" value="GO" onclick="return Client.submitForm(event)" onsubmit="return Client.submitForm(event)">
+                    </div>
+                    <div id="url-status"></div>
                 </form>
-            <section>
+            </section>
+            <section class="status-wrapper">
+                <ol id="status">
+                </ol>
+            </section>
 
-            <section>
-                <strong>Form Results:</strong>
-                <div id="results"></div>
+            <section class="results-wrapper">
+                <div class="polarity-wrapper">
+                    <h4>Polarity</h4>
+                    <div id="polarity"></div>
+                    <div class="confidence">Confidence: <span id="polar-conf"></span></div>
+                </div>
+                <div class="subjectivity-wrapper">
+                    <h4>Subjectivity</h4>
+                    <div id="subjectivity"></div>
+                    <div class="confidence">Confidence: <span id="subj-conf"></span></div>
+                </div>
             </section>
         </main>
 
         <footer>
-            <p>This is a footer</p>
+            <p>Xavier Soler for Udacity</p>
         </footer>
 
     </body>
