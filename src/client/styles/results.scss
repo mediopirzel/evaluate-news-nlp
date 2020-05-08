@@ -4,11 +4,9 @@
     max-width: 600px;
 }
 
-ol#status {
-    counter-reset: my-counter;
-}
 
 #status {
+    counter-reset: my-counter;
 
     li {
         font-size: 1.4rem;

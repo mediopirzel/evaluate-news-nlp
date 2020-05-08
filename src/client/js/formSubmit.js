@@ -27,26 +27,18 @@ function  submitForm(event) {
             let polarOrigin = res.polarity_confidence;
             let subjOrigin = res.subjectivity_confidence;
 
-            let polarFixed = '';
-            let subjFixed = '';
+            if(polarOrigin < 1) {
+                polarOrigin = polarOrigin.toFixed(2)
+            } 
 
-            if(polarOrigin == 1) {
-                polarFixed = polarOrigin
-            } else {
-                polarFixed = polarOrigin.toFixed(2)
+            if(subjOrigin < 1) {
+                subjOrigin = subjOrigin.toFixed(2)
             }
-
-            if(subjOrigin == 1) {
-                subjFixed = subjOrigin
-            } else {
-                subjFixed = subjOrigin.toFixed(2)
-            }
-
 
             document.getElementById('polarity').innerHTML = res.polarity
             document.getElementById('subjectivity').innerHTML = res.subjectivity
-            document.getElementById('polar-conf').innerHTML = polarFixed
-            document.getElementById('subj-conf').innerHTML = subjFixed
+            document.getElementById('polar-confidence').innerHTML = polarOrigin
+            document.getElementById('subj-confidence').innerHTML = subjOrigin
             
         })
     } 
