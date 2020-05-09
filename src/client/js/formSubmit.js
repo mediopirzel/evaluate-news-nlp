@@ -1,11 +1,12 @@
 function  submitForm(event) {
     event.preventDefault()
 
-    // check what text was put into the form field
+    // URL to test
     const formUrl = document.getElementById('url-field').value
+
     const main = document.querySelector('main').classList;
 
-    
+    // Only send to API if url is correct
     if (Client.checkUrl(formUrl)==true){
         Client.updateStatus('stat_ok', 'submitting to Aylien');
        fetch('http://localhost:8081/aylien',{
@@ -19,11 +20,13 @@ function  submitForm(event) {
         .then(res => res.json())
         .then(function(res) {
 
-            
+            //Update status
             Client.updateStatus('stat_ok', 'Data Recived');
+
+            //show results
             main.toggle('show_results');
-            //console.log(res.polarity);
             
+            //If values are < 1 we keep only to decimals
             let polarOrigin = res.polarity_confidence;
             let subjOrigin = res.subjectivity_confidence;
 
@@ -35,6 +38,7 @@ function  submitForm(event) {
                 subjOrigin = subjOrigin.toFixed(2)
             }
 
+            //Show results
             document.getElementById('polarity').innerHTML = res.polarity
             document.getElementById('subjectivity').innerHTML = res.subjectivity
             document.getElementById('polar-confidence').innerHTML = polarOrigin
