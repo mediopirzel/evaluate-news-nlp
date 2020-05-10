@@ -1,5 +1,7 @@
 # Evaluate a news article with Natural Language Processing
 
+![App screenshot](img/screenshots.png)
+
 ## Install
 Fork, clone, or download this repo to begin the project setup.
 
